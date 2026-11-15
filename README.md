@@ -11,6 +11,7 @@ All data is invented (building ESM-01, seed 4411).
 | `mockups/` | Five standalone mockups (A walkthrough, B scan app, C poster, D twin replay, E BPMN) |
 | `twin/` | Static snapshot of the PoC's live assembly-state view, with each part's joined record as JSON |
 | `figures/` | Figures from `docs/figures/` |
+| `es/` | Spanish version (Chile) of every page above, same layout: `es/index.html`, `es/poc.html`, `es/mockups/`, `es/twin/` (JSON records and figures are shared with the English pages) |
 
 ## Updating
 
@@ -19,6 +20,12 @@ This repository is a published copy. The source lives in the (private) PoC repos
 
 The mockups are built outside this repository; replace the files in `mockups/` to update them,
 then re-add the fixed "DPP Madera home" link (`class="dppm-home"`) right after `<body>`.
+
+Languages: English is the default at the site root and Spanish lives under `es/` with the same file names.
+Every page has an EN/ES switcher (`class="lang"` in the header of the site pages, `class="dppm-lang"` pill in the
+mockups, next to the home link) and `hreflang` alternate links (en, es, x-default = en) pointing at dppchile.com.
+When you change an English page, make the same change in its `es/` twin. `make site` writes both
+`twin/index.html` and `es/twin/index.html`.
 
 ## Publish
 
