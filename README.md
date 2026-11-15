@@ -25,9 +25,10 @@ then re-add the fixed "DPP Madera home" link (`class="dppm-home"`) right after `
 `.github/workflows/pages.yml` publishes the repository root to GitHub Pages on every push to `main`.
 One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
-## Connect a custom domain (for example dppchile.com)
+## Custom domain: dppchile.com
 
-Do this after buying the domain. Replace `dppchile.com` and `<user>` as needed.
+The site's domain is `dppchile.com` (also recorded in the `CNAME` file; with the GitHub Actions
+source the Pages setting below is what counts, the file is a record of it).
 
 1. In this repo: **Settings → Pages → Custom domain**, enter `dppchile.com`, save.
    (With the GitHub Actions source no `CNAME` file is needed; the setting is enough.) (Optional but recommended first: verify the domain under
@@ -44,7 +45,7 @@ Do this after buying the domain. Replace `dppchile.com` and `<user>` as needed.
    | AAAA | `@` | `2606:50c0:8001::153` |
    | AAAA | `@` | `2606:50c0:8002::153` |
    | AAAA | `@` | `2606:50c0:8003::153` |
-   | CNAME | `www` | `<user>.github.io` |
+   | CNAME | `www` | `diegoscalvetti.github.io` |
 
    Remove any other A, AAAA or CNAME records on `@` and `www` (registrars often add a parking page).
 3. Wait for DNS (minutes to a few hours), then tick **Enforce HTTPS** in Settings → Pages.
