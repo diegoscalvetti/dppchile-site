@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Resultados de la PoC</title>
+<meta name="description" content="Lo que construyó la prueba de concepto de DPP Madera, las once pruebas y sus resultados. Datos ficticios.">
+<link rel="alternate" hreflang="en" href="https://dppchile.com/poc.html">
+<link rel="alternate" hreflang="es" href="https://dppchile.com/es/poc.html">
+<link rel="alternate" hreflang="x-default" href="https://dppchile.com/poc.html">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="wrap">
+
+<div class="top">
+  <a class="brand" href="index.html">DPP Madera</a>
+  <nav aria-label="Sitio">
+    <a href="index.html#records">Los cuatro registros</a>
+    <a href="index.html#audiences">Elija por dónde entrar</a>
+    <a href="poc.html" aria-current="page">Resultados de la prueba de concepto</a>
+    <a href="twin/index.html">Gemelo de montaje</a>
+    <span class="lang" aria-label="Idioma"><a href="../poc.html" hreflang="en" lang="en">EN</a><a href="poc.html" aria-current="page">ES</a></span>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="eyebrow">Prueba de concepto · resultados</div>
+  <h1>Qué construimos y cómo verificamos que funciona</h1>
+  <p class="lede">Un sistema pequeño y operativo, con un servicio por cada registro (pasaporte, observaciones en obra, libro del edificio) y un gemelo de montaje simple que lee de ellos. Le cargamos la historia completa de un edificio ficticio, incluidos cinco problemas introducidos a propósito, y verificamos que mantuviera en orden la historia de cada pieza.</p>
+  <div class="banner"><b>Solo datos ficticios.</b> Edificio ESM-01, 20 piezas, 179 registros, semilla 4411. Las cifras de búsquedas manuales de la última tabla son estimaciones del esfuerzo manual, no mediciones.</div>
+</header>
+
+<section aria-labelledby="arch-h">
+  <h2 id="arch-h">Cómo encajan las piezas</h2>
+  <figure>
+    <img src="../figures/architecture.png" alt="Arquitectura: los servicios de pasaporte, observaciones en obra y libro del edificio mantienen cada uno sus propios datos; un resolvedor de identidad vincula sus identificadores; el gemelo de montaje y la vista unificada leen de ellos a través de sus interfaces públicas." width="1600" loading="lazy">
+    <figcaption>Cada servicio mantiene sus propios datos. Un resolvedor de identidad vincula los distintos códigos que lleva una pieza (QR, lote, elemento del modelo), así que nada se copia entre servicios. Figura en inglés.</figcaption>
+  </figure>
+</section>
+
+<section aria-labelledby="tests-h">
+  <h2 id="tests-h">Las once pruebas: todas aprobadas</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>#</th><th>Qué verificamos</th><th>En palabras simples</th><th>Resultado</th></tr></thead>
+    <tbody>
+      <tr><td>T1</td><td>Resolución de identidad</td><td>Escanee cualquiera de los códigos de una pieza y llegará a todos los demás.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T2</td><td>Sin duplicación</td><td>Cada dato vive en un solo lugar; los demás solo apuntan a él.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T3</td><td>Historia completa</td><td>La historia de cada pieza va de la fábrica al edificio sin vacíos, o el vacío queda marcado.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T4</td><td>Traspaso faltante</td><td>Se detecta una pieza que llegó a obra sin registro de despacho (falla introducida).</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T5</td><td>Lecturas en conflicto</td><td>Dos lecturas de humedad que no coinciden (11,8% y 18,5%) se conservan ambas, con quién y cuándo, y se envían a revisión.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T6</td><td>Registros tardíos</td><td>Una inspección registrada 48 horas tarde igual queda en el orden correcto.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T7</td><td>Conflicto en el modelo de diseño</td><td>Se detectan dos piezas que reclaman el mismo elemento del modelo de diseño.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T8</td><td>Imagen del montaje</td><td>El gemelo muestra el estado correcto de las 20 piezas y marca la que se instaló fuera de secuencia.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T9</td><td>Una vista por pieza</td><td>Una sola consulta devuelve enlaces a los cuatro registros de cualquier pieza.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T10</td><td>Cobertura de necesidades</td><td>Cada una de 14 necesidades de información tomadas de la literatura se atiende o se marca honestamente como "aún no cubierta".</td><td><span class="badge b-ok">aprobada</span></td></tr>
+      <tr><td>T11</td><td>Repetible</td><td>Una copia limpia y un solo comando reproducen todos los resultados.</td><td><span class="badge b-ok">aprobada</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="state-h">
+  <h2 id="state-h">La imagen del montaje al final de la reproducción</h2>
+  <div class="grid3">
+    <div class="card"><span class="stat">18</span><span>piezas inspeccionadas</span></div>
+    <div class="card"><span class="stat">1</span><span>pieza instalada, pendiente de inspección</span></div>
+    <div class="card"><span class="stat">1</span><span>pieza entregada, aún sin instalar</span></div>
+  </div>
+  <figure>
+    <img src="../figures/assembly_state.png" alt="Gráfico del estado de montaje por piso: la mayoría de las piezas inspeccionadas, una instalada, una entregada, con las piezas marcadas destacadas." width="1600" loading="lazy">
+    <figcaption>Estado de cada pieza por piso, con las piezas marcadas destacadas. Cargar toda la historia tomó 357 consultas. Figura en inglés.</figcaption>
+  </figure>
+  <div class="row"><a class="btn" href="twin/index.html">Abrir la vista de montaje en funcionamiento (captura estática)</a></div>
+</section>
+
+<section aria-labelledby="q-h">
+  <h2 id="q-h">Preguntas que la gente realmente hace</h2>
+  <p>Cinco preguntas de ejemplo del personal de obra y de fábrica. Con los registros vinculados, cada una es una sola consulta. Las cifras de búsquedas manuales son nuestra estimación de lo que se necesita hoy para encontrar la misma respuesta en archivos separados.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Pregunta</th><th>Respuesta</th><th>Consultas</th><th>Búsquedas manuales (estimación)</th></tr></thead>
+    <tbody>
+      <tr><td>¿Qué paneles del piso 2 están instalados pero no inspeccionados?</td><td>P05</td><td>1</td><td>9</td></tr>
+      <tr><td>¿Dónde está el elemento del modelo de P06, y está completa su cadena de custodia?</td><td>En el piso 2, inspeccionado, custodia completa</td><td>1</td><td>4</td></tr>
+      <tr><td>¿Qué piezas llegaron a obra sin una cadena de custodia completa?</td><td>G02</td><td>1</td><td>40</td></tr>
+      <tr><td>¿Qué lecturas de humedad no coinciden, y quién las informó?</td><td>11,8% y 18,5% en un panel, enviadas a revisión</td><td>1</td><td>40</td></tr>
+      <tr><td>¿Qué piezas se instalaron fuera del orden planificado?</td><td>P11</td><td>1</td><td>40</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section aria-labelledby="trl-h">
+  <h2 id="trl-h">Dónde estamos</h2>
+  <p>El proyecto parte en el nivel de madurez tecnológica (TRL) 2. Esta prueba de concepto es evidencia sólida de ese nivel y el primer paso hacia TRL 3, previsto para el mes 6 con datos reales de empresas asociadas. TRL 4 está previsto para el mes 11 y TRL 5 para el final del proyecto.</p>
+  <p class="note">El código de la PoC y el informe completo de pruebas están disponibles para evaluadores y socios, a solicitud.</p>
+</section>
+
+<footer>
+  <p><b>Escuela de Construcción Civil (ECC-UC) · CENAMAD</b></p>
+  <p>Prueba de concepto DPP Madera · solo datos ficticios · <a href="index.html">Volver al inicio</a></p>
+</footer>
+</div>
+</body>
+</html>
